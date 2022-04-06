@@ -8,12 +8,13 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return jsonify({'message': 'predicts the bitcoin prices using month and year.'})
+    return jsonify({'message': 'predicts the bitcoin prices using dayofmonth, month and year.'})
 
-@app.route('/predicts_price/<month>/<year>', methods=["GET"])
-def predicts_price(month,year):
+@app.route('/predicts_price/<dayofmonth>/<month>/<year>', methods=["GET"])
+def predicts_price(dayofmonth,month,year):
     model = pickle.load(open('model.pkl', 'rb'))
-    data = {'month': [month],
+    data = {'dayofmonth':[dayofmonth],
+            'month': [month],
             'year': [year]}
 
     df_test = pd.DataFrame(data)
