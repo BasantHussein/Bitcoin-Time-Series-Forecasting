@@ -12,7 +12,7 @@ def index():
 
 @app.route('/predicts_price/<dayofmonth>/<month>/<year>', methods=["GET"])
 def predicts_price(dayofmonth,month,year):
-    model = pickle.load(open('model.pkl', 'rb'))
+    model = pickle.load(open('RidgeModel.pkl', 'rb'))
     data = {'dayofmonth':[dayofmonth],
             'month': [month],
             'year': [year]}
